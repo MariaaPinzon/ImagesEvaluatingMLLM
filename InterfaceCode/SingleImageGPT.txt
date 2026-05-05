@@ -1,0 +1,57 @@
+<View>
+
+
+  <View style="padding: 15px; border: 1px solid #d6d6d6; border-radius: 5px; margin-bottom: 25px; background-color: #f7f7f7;">
+    <Header value="Instrucciones para la Evaluación" size="4" style="margin-top: 0; color: #222;"/>
+    <Text name="intro_inst" value="A continuación va a responder a una pregunta, tenga en cuenta lo siguiente:" style="margin-bottom: 10px; font-style: italic; color: #333;"/>
+    <Text name="instrucciones_1" value="• Si hay más de un significado, evalúe si la imagen acertó al menos uno." style="color: #333;"/>
+    <Text name="instrucciones_2" value="• Puede guiarse por su propio conocimiento del modismo, pero la definición se proporciona como referencia por si la desconoce." style="color: #333;"/>
+    
+    <View style="background-color: #fff3cd; border-left: 4px solid #ffeeba; padding: 10px; border-radius: 4px; margin-top: 15px;">
+      <Text name="inst_generales_6" value="Nota: Si considera que la expresión mostrada NO es un modismo colombiano, omita la respuesta a la pregunta y marque la casilla correspondiente en la sección 'Casos Especiales' al final de la página. Si la imagen acierta pero representa un significado válido distinto al proporcionado, indíquelo en el campo de texto específico." style="font-size: 14px; font-weight: 500; color: #856404; margin: 0;"/>
+    </View>
+  </View>
+
+  <View style="padding: 15px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 25px; background-color: #fdfdfd;">
+    <Header value="Datos del Modismo:" size="3" style="margin-top: 0; color: #111;"/>
+    
+    <Header value="Modismo:" size="5" style="margin-bottom: 5px; color: #333;"/>
+    <Text name="texto_modismo" value="$modismo" style="margin-top: 0; margin-bottom: 15px; font-size: 16px;"/>
+    
+    <Header value="Significado:" size="5" style="margin-bottom: 5px; color: #333;"/>
+    <Text name="texto_significado" value="$significado" style="margin-top: 0; font-size: 16px; white-space: pre-wrap; line-height: 1.5;"/>
+  </View>
+
+  <Header value="¿Representa esta imagen correctamente el significado figurado del modismo?" size="4" style="margin-bottom: 20px; color: #111; text-align: center;"/>
+
+  <View style="display: flex; justify-content: center; margin-bottom: 25px;">
+    <View style="width: 450px; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
+      <Image name="imagen_mllm" value="$image" width="100%"/>
+    </View>
+  </View>
+
+  <View style="display: flex; justify-content: center; margin-bottom: 30px;">
+    <Choices name="evaluacion_binaria" toName="imagen_mllm" choice="single" showInline="true">
+      <Choice value="Sí" hint="Representa el modismo adecuadamente"/>
+      <Choice value="No" hint="No lo representa o tiene alucinaciones severas"/>
+    </Choices>
+  </View>
+
+  <View style="margin-bottom: 25px; padding: 15px; border: 1px solid #e2e3e5; border-radius: 5px; background-color: #f8f9fa;">
+    <Header value="Casos Especiales:" size="5" style="margin-top: 0; color: #333;"/>
+    
+    <Choices name="no_es_modismo" toName="imagen_mllm" choice="multiple" showInline="true" style="margin-bottom: 15px;">
+      <Choice value="Esta expresión NO es un modismo colombiano" />
+    </Choices>
+    
+    <Text name="hint_otro_sig" value="Si seleccionó 'Sí' porque la imagen ilustra un significado válido diferente al proporcionado arriba, descríbalo aquí:" style="font-size: 14px; color: #444; margin-bottom: 5px; font-weight: 500;"/>
+    <TextArea name="otro_significado" toName="imagen_mllm" placeholder="Escriba el otro significado válido..." maxSubmissions="1" showSubmitButton="false" rows="1"/>
+  </View>
+
+  <View style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #ccc;">
+    <Header value="Comentarios:" size="5"/>
+    <Text name="hint_comentario" value="Si nota ambigüedades, alucinaciones, estereotipos o algo curioso de la imagen, descríbalo brevemente." style="color: #444; font-size: 14px; margin-bottom: 10px;"/>
+    
+    <TextArea name="comentarios" toName="imagen_mllm" placeholder="Escriba sus observaciones aquí..." maxSubmissions="1" showSubmitButton="false" rows="2"/>
+  </View>
+</View>
